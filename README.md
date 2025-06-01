@@ -41,4 +41,6 @@ obs.: Este sistema é um projeto educacional e demonstração, utilizando um nom
 - Sem dependências externas para facilitar o uso e implantação
 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/50a41fec-a9d6-4286-9b1c-ce4a0fddeb1a/deploy-status)](https://app.netlify.com/projects/clinicaveterinariasistema/deploys)
+
 
