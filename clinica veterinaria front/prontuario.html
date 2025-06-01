@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prontuário Eletrônico - Clínica Veterinária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    
+  <header>
+    <h1>Prontuário Eletrônico</h1>
+   <nav aria-label="Navegação principal">
+  <a href="index.html">Início</a>
+  <a href="clientes.html">Clientes</a>
+  <a href="animal.html">Animais</a>
+  <a href="agendamentodeconsultas.html">Agendamento</a>
+  <a href="prontuario.html">Prontuário</a>
+  <a href="financeiro.html">Financeiro</a>
+  <a href="vacinas.html">Vacinação</a>
+  <a href="internacao.html">Internações</a>
+  <a href="usuarios.html">Usuários</a>
+  <a href="notas.html">Notas Fiscais</a>
+  <button id="logoutBtn" aria-label="Sair do sistema">Logout</button>
+</nav>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = 'login.html';
+  });
+</script>
+
+  </header>
+
+  <main>
+    <section class="form-section" aria-labelledby="formProntuarioTitle">
+      <h2 id="formProntuarioTitle">Registrar Atendimento</h2>
+      <form id="prontuarioForm" autocomplete="off" novalidate>
+        <label for="nomeAnimal">Nome do Animal:</label>
+        <input type="text" id="nomeAnimal" name="nomeAnimal" required maxlength="60" />
+
+        <label for="nomeTutor">Nome do Tutor:</label>
+        <input type="text" id="nomeTutor" name="nomeTutor" required maxlength="60" />
+
+        <label for="dataAtendimento">Data do Atendimento:</label>
+        <input type="date" id="dataAtendimento" name="dataAtendimento" required />
+
+        <label for="veterinario">Veterinário Responsável:</label>
+        <input type="text" id="veterinario" name="veterinario" required maxlength="60" />
+
+        <label for="anamnese">Anamnese (Histórico e sintomas):</label>
+        <textarea id="anamnese" name="anamnese" rows="4" required maxlength="500"></textarea>
+
+        <label for="exameFisico">Exame Físico:</label>
+        <textarea id="exameFisico" name="exameFisico" rows="3" maxlength="500"></textarea>
+
+        <label for="diagnostico">Diagnóstico:</label>
+        <textarea id="diagnostico" name="diagnostico" rows="3" maxlength="300"></textarea>
+
+        <label for="tratamento">Tratamento Prescrito:</label>
+        <textarea id="tratamento" name="tratamento" rows="3" maxlength="500"></textarea>
+
+        <label for="observacoes">Observações Importantes:</label>
+        <textarea id="observacoes" name="observacoes" rows="2" maxlength="300"></textarea>
+
+        <button type="submit">Salvar Atendimento</button>
+        <div id="mensagemProntuario" role="alert" aria-live="assertive"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="listaAtendimentosTitle" class="lista-prontuario">
+      <h2 id="listaAtendimentosTitle">Histórico de Atendimentos</h2>
+      <table id="prontuarioTable" aria-describedby="listaAtendimentosTitle">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Animal</th>
+            <th>Tutor</th>
+            <th>Veterinário</th>
+            <th>Diagnóstico</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Atendimentos serão listados aqui -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Clínica Veterinária. Projeto Pessoal Daiane Horbach. Todos os direitos reservados.</p>
+  </footer>
+
+<script>
+  const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+  if (!usuarioLogado || usuarioLogado.perfil !== 'admin') {
+    alert('Você precisa estar logado como administrador para acessar esta página.');
+    window.location.href = 'login.html';
+  }
+</script>
+    <script src="prontuario.js"></script>
+    
+</body>
+</html>

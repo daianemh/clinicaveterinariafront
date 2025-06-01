@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Controle de Estoque - Clínica Veterinária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Controle de Estoque</h1>
+    <nav aria-label="Navegação principal">
+  <a href="index.html">Início</a>
+  <a href="clientes.html">Clientes</a>
+  <a href="animal.html">Animais</a>
+  <a href="agendamentodeconsultas.html">Agendamento</a>
+  <a href="prontuario.html">Prontuário</a>
+  <a href="financeiro.html">Financeiro</a>
+  <a href="vacinas.html">Vacinação</a>
+  <a href="internacao.html">Internações</a>
+  <a href="usuarios.html">Usuários</a>
+  <a href="notas.html">Notas Fiscais</a>
+  <button id="logoutBtn" aria-label="Sair do sistema">Logout</button>
+</nav>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = 'login.html';
+  });
+</script>
+
+  </header>
+
+  <main>
+    <section class="form-section" aria-labelledby="formEstoqueTitle">
+      <h2 id="formEstoqueTitle">Adicionar/Atualizar Produto</h2>
+      <form id="estoqueForm" autocomplete="off" novalidate>
+        <label for="nomeProduto">Nome do Produto:</label>
+        <input type="text" id="nomeProduto" name="nomeProduto" required maxlength="80" />
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" required min="0" />
+
+        <label for="validade">Data de Validade:</label>
+        <input type="date" id="validade" name="validade" required />
+
+        <label for="descricaoProduto">Descrição:</label>
+        <textarea id="descricaoProduto" name="descricaoProduto" rows="3" maxlength="300"></textarea>
+
+        <button type="submit">Salvar Produto</button>
+        <div id="mensagemEstoque" role="alert" aria-live="assertive"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="listaEstoqueTitle" class="lista-estoque">
+      <h2 id="listaEstoqueTitle">Produtos em Estoque</h2>
+      <table id="estoqueTable" aria-describedby="listaEstoqueTitle">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Validade</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Produtos serão listados aqui -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+ <p>&copy; 2025 Clínica Veterinária. Projeto Pessoal Daiane Horbach. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="estoque.js"></script>
+  <script>
+  const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+  if (!usuarioLogado || usuarioLogado.perfil !== 'admin') {
+    alert('Você precisa estar logado como administrador para acessar esta página.');
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>

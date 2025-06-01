@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prescrição Eletrônica e Exames - Clínica Veterinária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Prescrição Eletrônica e Exames</h1>
+    <nav aria-label="Navegação principal">
+  <a href="index.html">Início</a>
+  <a href="clientes.html">Clientes</a>
+  <a href="animal.html">Animais</a>
+  <a href="agendamentodeconsultas.html">Agendamento</a>
+  <a href="prontuario.html">Prontuário</a>
+  <a href="financeiro.html">Financeiro</a>
+  <a href="vacinas.html">Vacinação</a>
+  <a href="internacao.html">Internações</a>
+  <a href="usuarios.html">Usuários</a>
+  <a href="notas.html">Notas Fiscais</a>
+  <button id="logoutBtn" aria-label="Sair do sistema">Logout</button>
+</nav>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = 'login.html';
+  });
+</script>
+
+  </header>
+
+  <main>
+    <section class="form-section" aria-labelledby="formPrescricaoTitle">
+      <h2 id="formPrescricaoTitle">Registrar Prescrição e Exames</h2>
+      <form id="prescricaoForm" autocomplete="off" enctype="multipart/form-data" novalidate>
+        <label for="animalNome">Nome do Animal:</label>
+        <input type="text" id="animalNome" name="animalNome" required maxlength="60" />
+
+        <label for="veterinarioNome">Veterinário:</label>
+        <input type="text" id="veterinarioNome" name="veterinarioNome" required maxlength="60" />
+
+        <label for="dataPrescricao">Data:</label>
+        <input type="date" id="dataPrescricao" name="dataPrescricao" required />
+
+        <label for="descricaoPrescricao">Descrição da Prescrição:</label>
+        <textarea id="descricaoPrescricao" name="descricaoPrescricao" rows="4" maxlength="1000" required></textarea>
+
+        <label for="arquivoExame">Anexar Exame Laboratorial (PDF ou imagem):</label>
+        <input type="file" id="arquivoExame" name="arquivoExame" accept=".pdf,image/*" />
+
+        <button type="submit">Salvar</button>
+        <div id="mensagemPrescricao" role="alert" aria-live="assertive"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="listaPrescricoesTitle" class="lista-prescricoes">
+      <h2 id="listaPrescricoesTitle">Prescrições e Exames Registrados</h2>
+      <table id="prescricaoTable" aria-describedby="listaPrescricoesTitle">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Animal</th>
+            <th>Veterinário</th>
+            <th>Descrição</th>
+            <th>Exame</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Prescrições serão listadas aqui -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Clínica Veterinária. Projeto Pessoal Daiane Horbach. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="prescricao.js"></script>
+  <script>
+  const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+  if (!usuarioLogado || usuarioLogado.perfil !== 'admin') {
+    alert('Você precisa estar logado como administrador para acessar esta página.');
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>

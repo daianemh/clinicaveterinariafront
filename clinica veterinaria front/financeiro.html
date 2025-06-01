@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestão Financeira - Clínica Veterinária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Gestão Financeira</h1>
+    <nav aria-label="Navegação principal">
+  <a href="index.html">Início</a>
+  <a href="clientes.html">Clientes</a>
+  <a href="animal.html">Animais</a>
+  <a href="agendamentodeconsultas.html">Agendamento</a>
+  <a href="prontuario.html">Prontuário</a>
+  <a href="financeiro.html">Financeiro</a>
+  <a href="vacinas.html">Vacinação</a>
+  <a href="internacao.html">Internações</a>
+  <a href="usuarios.html">Usuários</a>
+  <a href="notas.html">Notas Fiscais</a>
+  <button id="logoutBtn" aria-label="Sair do sistema">Logout</button>
+</nav>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = 'login.html';
+  });
+</script>
+
+  </header>
+
+  <main>
+    <section class="form-section" aria-labelledby="formFinanceiroTitle">
+      <h2 id="formFinanceiroTitle">Registrar Receita ou Despesa</h2>
+      <form id="financeiroForm" autocomplete="off" novalidate>
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Selecione</option>
+          <option value="receita">Receita</option>
+          <option value="despesa">Despesa</option>
+        </select>
+
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required maxlength="100" />
+
+        <label for="valor">Valor (R$):</label>
+        <input type="number" id="valor" name="valor" required min="0.01" step="0.01" />
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required />
+
+        <button type="submit">Registrar</button>
+        <div id="mensagemFinanceiro" role="alert" aria-live="assertive"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="saldoTitle" class="saldo-section">
+      <h2 id="saldoTitle">Resumo Financeiro</h2>
+      <p>Saldo Atual: <strong id="saldoAtual">R$ 0,00</strong></p>
+    </section>
+
+    <section aria-labelledby="listaFinanceiroTitle">
+      <h2 id="listaFinanceiroTitle">Movimentações</h2>
+      <table id="financeiroTable" aria-describedby="listaFinanceiroTitle">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Valor (R$)</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Movimentações serão listadas aqui -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+ <p>&copy; 2025 Clínica Veterinária. Projeto Pessoal Daiane Horbach. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="financeiro.js"></script>
+  <script>
+  const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+  if (!usuarioLogado || usuarioLogado.perfil !== 'admin') {
+    alert('Você precisa estar logado como administrador para acessar esta página.');
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>

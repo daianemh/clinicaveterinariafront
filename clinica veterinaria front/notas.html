@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Emissão de Notas Fiscais - Clínica Veterinária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Emissão de Notas Fiscais</h1>
+    <nav aria-label="Navegação principal">
+  <a href="index.html">Início</a>
+  <a href="clientes.html">Clientes</a>
+  <a href="animal.html">Animais</a>
+  <a href="agendamentodeconsultas.html">Agendamento</a>
+  <a href="prontuario.html">Prontuário</a>
+  <a href="financeiro.html">Financeiro</a>
+  <a href="vacinas.html">Vacinação</a>
+  <a href="internacao.html">Internações</a>
+  <a href="usuarios.html">Usuários</a>
+  <a href="notas.html">Notas Fiscais</a>
+  <button id="logoutBtn" aria-label="Sair do sistema">Logout</button>
+</nav>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = 'login.html';
+  });
+</script>
+
+  </header>
+
+  <main>
+    <section class="form-section" aria-labelledby="formNotaTitle">
+      <h2 id="formNotaTitle">Emitir Nota Fiscal</h2>
+      <form id="notaForm" autocomplete="off" novalidate>
+        <label for="clienteNome">Nome do Cliente:</label>
+        <input type="text" id="clienteNome" name="clienteNome" required maxlength="60" />
+
+        <label for="servicoDescricao">Descrição do Serviço:</label>
+        <input type="text" id="servicoDescricao" name="servicoDescricao" required maxlength="200" />
+
+        <label for="valorServico">Valor (R$):</label>
+        <input type="number" id="valorServico" name="valorServico" required min="0.01" step="0.01" />
+
+        <label for="dataEmissao">Data de Emissão:</label>
+        <input type="date" id="dataEmissao" name="dataEmissao" required />
+
+        <button type="submit">Emitir Nota</button>
+        <div id="mensagemNota" role="alert" aria-live="assertive"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="listaNotasTitle" class="lista-notas">
+      <h2 id="listaNotasTitle">Notas Emitidas</h2>
+      <table id="notasTable" aria-describedby="listaNotasTitle">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Serviço</th>
+            <th>Valor (R$)</th>
+            <th>Data Emissão</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Notas serão listadas aqui -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+ <p>&copy; 2025 Clínica Veterinária. Projeto Pessoal Daiane Horbach. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="notas.js"></script>
+  <script>
+  const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+  if (!usuarioLogado || usuarioLogado.perfil !== 'admin') {
+    alert('Você precisa estar logado como administrador para acessar esta página.');
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>
