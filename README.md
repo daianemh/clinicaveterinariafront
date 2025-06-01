@@ -1,7 +1,7 @@
 # clinicaveterinariafront
 # Sistema de Gestão para Clínica Veterinária
 
-![Logo](logotipo.jpg)
+![Logo]([logotipo.jpg](https://raw.githubusercontent.com/daianemh/clinicaveterinariafront/refs/heads/main/clinica%20veterinaria%20front/Logotipo.jpg))
 
 ## Descrição
 
