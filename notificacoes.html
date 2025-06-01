@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notificações para Clientes - Clínica Veterinária</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Notificações para Clientes</h1>
+    <nav aria-label="Navegação principal">
+  <a href="index.html">Início</a>
+  <a href="clientes.html">Clientes</a>
+  <a href="animal.html">Animais</a>
+  <a href="agendamentodeconsultas.html">Agendamento</a>
+  <a href="prontuario.html">Prontuário</a>
+  <a href="financeiro.html">Financeiro</a>
+  <a href="vacinas.html">Vacinação</a>
+  <a href="internacao.html">Internações</a>
+  <a href="usuarios.html">Usuários</a>
+  <a href="notas.html">Notas Fiscais</a>
+  <button id="logoutBtn" aria-label="Sair do sistema">Logout</button>
+</nav>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('usuarioLogado');
+    window.location.href = 'login.html';
+  });
+</script>
+
+  </header>
+
+  <main>
+    <section class="form-section" aria-labelledby="formNotificacaoTitle">
+      <h2 id="formNotificacaoTitle">Enviar Notificação</h2>
+      <form id="notificacaoForm" autocomplete="off" novalidate>
+        <label for="clienteNome">Nome do Cliente:</label>
+        <input type="text" id="clienteNome" name="clienteNome" required maxlength="60" />
+
+        <label for="clienteContato">Contato (WhatsApp ou E-mail):</label>
+        <input type="text" id="clienteContato" name="clienteContato" required maxlength="100" placeholder="Número WhatsApp ou e-mail" />
+
+        <label for="tipoNotificacao">Tipo de Notificação:</label>
+        <select id="tipoNotificacao" name="tipoNotificacao" required>
+          <option value="">Selecione</option>
+          <option value="agendamento">Confirmação de Agendamento</option>
+          <option value="lembrete">Lembrete de Consulta</option>
+          <option value="cancelamento">Cancelamento</option>
+          <option value="posvenda">Pós-venda / Pesquisa de Satisfação</option>
+          <option value="promocao">Promoção / Novidade</option>
+        </select>
+
+        <label for="mensagem">Mensagem Personalizada:</label>
+        <textarea id="mensagem" name="mensagem" rows="4" maxlength="500" placeholder="Escreva a mensagem que deseja enviar" required></textarea>
+
+        <button type="submit">Enviar Notificação</button>
+        <div id="mensagemStatus" role="alert" aria-live="assertive"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="historicoNotificacoesTitle" class="historico-notificacoes">
+      <h2 id="historicoNotificacoesTitle">Histórico de Notificações Enviadas</h2>
+      <ul id="listaNotificacoes">
+        <!-- Histórico será listado aqui -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+   <p>&copy; 2025 Clínica Veterinária. Projeto Pessoal Daiane Horbach. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="notificacoes.js"></script>
+  <script>
+  const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado'));
+  if (!usuarioLogado || usuarioLogado.perfil !== 'admin') {
+    alert('Você precisa estar logado como administrador para acessar esta página.');
+    window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>

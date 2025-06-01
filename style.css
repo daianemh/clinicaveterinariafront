@@ -1,0 +1,585 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8f6;
+    color: #4a4a4a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+    background: #2e7d4f;
+    color: #fff;
+    padding: 32px 45 24px 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+header nav {
+    margin-top: 12px;
+}
+
+header nav a {
+    color: #e6f4ea;
+    text-decoration: none;
+    margin: 0 18px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+header nav a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Conteúdo principal */
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 40px auto 32px auto;
+    background: #fff;
+    padding: 40px 32px 32px 32px;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px #dbe6e4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #2e7d4f;
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 24px;
+}
+
+/* Seção de filtros */
+.filter-section {
+    background: #f0f7f4;
+    padding: 18px 24px;
+    border-radius: 8px;
+    margin-bottom: 28px;
+    width: 100%;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+}
+
+/* Formulários centralizados e destacados */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 32px 0;
+    padding: 28px 36px;
+    background: #f8fbf9;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #e0ede7;
+    min-width: 340px;
+    width: 100%;
+    max-width: 420px;
+}
+
+label {
+    color: #2e7d4f;
+    font-weight: 500;
+    margin-bottom: 6px;
+    align-self: flex-start;
+}
+
+input, select, textarea {
+    padding: 10px 14px;
+    border: 1px solid #c8e6c9;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    background: #fff;
+    color: #4a4a4a;
+    outline: none;
+    transition: border 0.2s;
+    width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 1.5px solid #43a047;
+}
+
+/* Botão principal */
+button, .btn {
+    background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #e0ede7;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
+}
+
+button:hover, .btn:hover {
+    background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Tabela estilizada */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0 16px 0;
+    background: #f8fbf9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #e0ede7;
+}
+
+th, td {
+    padding: 14px 18px;
+    text-align: left;
+}
+
+th {
+    background: #e6f4ea;
+    color: #2e7d4f;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f4f8f6;
+}
+
+tr:hover {
+    background: #e0ede7;
+}
+
+/* Rodapé fixo */
+footer {
+    background: #2e7d4f;
+    color: #fff;
+    text-align: center;
+    padding: 18px 0 12px 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    box-shadow: 0 -2px 8px #dbe6e4;
+    margin-top: auto;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    main {
+        max-width: 98vw;
+        padding: 24px 8px;
+    }
+    form {
+        max-width: 98vw;
+        padding: 18px 8px;
+        min-width: unset;
+    }
+    .filter-section {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 6px;
+    }
+    table, th, td {
+        font-size: 0.98rem;
+        padding: 10px 6px;
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    main {
+        padding: 10px 2px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    form {
+        padding: 10px 2px;
+    }
+    .filter-section {
+        padding: 8px 2px;
+    }
+    table, th, td {
+        font-size: 0.92rem;
+        padding: 6px 2px;
+    }
+    .index-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* Botão fixo para index (exemplo de botão flutuante) */
+.index-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px #b2dfdb;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.index-btn:hover {
+    background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+    transform: scale(1.08);
+}
+
+/* Scrollbar customizada para experiência mais suave */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #e6f4ea;
+}
+::-webkit-scrollbar-thumb {
+    background: #b2dfdb;
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #43a047;
+}
+.error-message {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin-top: -14px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.success {
+    color: #388e3c;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.error {
+    color: #d32f2f;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* Ajuste para modal form-popup */
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 90%;
+    z-index: 1001;
+}
+
+/* Overlay para modal */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+/* Botões de ação */
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #2e7d4f;
+    font-weight: 600;
+    margin-right: 8px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: #c8e6c9;
+}
+
+.delete-btn:hover {
+    background-color: #ef9a9a;
+    color: #b71c1c;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0;
+}
+.welcome-section {
+    background: #fff;
+    padding: 40px 48px;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px #dbe6e4;
+    text-align: center;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.menu {
+    margin: 0;
+    width: 100%;
+}
+
+.menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 18px;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.menu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 8px #b2dfdb, 0 6px 20px rgba(67,160,71,0.13);
+    transition: 
+        background 0.2s, 
+        transform 0.12s cubic-bezier(.4,2,.6,1), 
+        box-shadow 0.2s;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.menu-link:hover, .menu-link:focus {
+    background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 24px #b2dfdb, 0 12px 40px rgba(67,160,71,0.18);
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .menu-link {
+        width: 100%;
+        min-width: 180px;
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .welcome-section {
+        padding: 20px 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-link {
+        width: 100%;
+        min-width: 180px;
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .welcome-section {
+        padding: 20px 8px;
+    }
+}
+/* Ajustes para o formulário de cadastro */
+.form-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.form-section, .saldo-section, table {
+  max-width: 700px;
+  margin: 24px auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #2e7d4f;
+}
+
+form input, form select, form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #c8e6c9;
+  font-size: 1rem;
+  outline: none;
+}
+
+form button {
+  background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+  color: white;
+  border: none;
+  font-weight: 700;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #4a4a4a;
+}
+
+table th, table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  background: #e6f4ea;
+  color: #2e7d4f;
+}
+
+.empty-row {
+  text-align: center;
+  color: #999;
+}
+
+.success {
+  color: #388e3c;
+  margin-top: 12px;
+}
+
+.error {
+  color: #d32f2f;
+  margin-top: 12px;
+}
+.lista-estoque {
+  max-width: 700px;
+  margin: 24px auto;
+}
+
+form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #2e7d4f;
+}
+
+form input, form select, form textarea, form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #c8e6c9;
+  font-size: 1rem;
+  outline: none;
+}
+
+form button {
+  background: linear-gradient(90deg, #43a047 60%, #66bb6a 100%);
+  color: white;
+  border: none;
+  font-weight: 700;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: linear-gradient(90deg, #388e3c 60%, #43a047 100%);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #4a4a4a;
+}
+
+table th, table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  background: #e6f4ea;
+  color: #2e7d4f;
+}
+
+.empty-row {
+  text-align: center;
+  color: #999;
+}
+
+.success {
+  color: #388e3c;
+  margin-top: 12px;
+}
+
+.error {
+  color: #d32f2f;
+  margin-top: 12px;
+}
